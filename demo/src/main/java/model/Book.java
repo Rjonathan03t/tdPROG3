@@ -14,4 +14,7 @@ public class Book {
     private int id_author;
 
 
+    public Book() {
+
+    }
 }

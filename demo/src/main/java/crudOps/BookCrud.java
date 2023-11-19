@@ -31,13 +31,13 @@ public class BookCrud  implements crudOperations<Book> {
     }
 
     @Override
-    public List<Book> saveAllBook(List<Book> toSave) throws SQLException {
+    public List<Book> saveAll(List<Book> toSave) throws SQLException {
         String query = "INSERT INTO Book (id_book, title, topic, id_author) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             for (Book book : toSave) {
                 preparedStatement.setInt(1, book.getId_book());
                 preparedStatement.setString(2, book.getTitle());
-                preparedStatement.setString(3, book.getTopic().getTopic_name()); // Assuming Topic has a 'topic_name' property
+                preparedStatement.setObject(3, book.getTopic().getTopic_name(), Types.OTHER); // Assuming Topic has a 'topic_name' property
                 preparedStatement.setInt(4, book.getId_author());
                 preparedStatement.addBatch(); // Add this book to the batch
             }
