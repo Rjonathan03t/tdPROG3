@@ -11,7 +11,6 @@ import java.util.List;
 public class BookCrud  implements crudOperations<Book> {
     private  Connection connection;
     public BookCrud(Connection connection) {
-        // Initialisez la connexion dans le constructeur
         this.connection = connection;
     }
 

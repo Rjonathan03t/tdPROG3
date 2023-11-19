@@ -12,7 +12,6 @@ import java.util.List;
 public class AuthorCrud implements crudOperations<Author> {
     private Connection connection;
     public AuthorCrud(Connection connection) {
-        // Initialisez la connexion dans le constructeur
         this.connection = connection;
     }
     @Override

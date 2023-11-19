@@ -9,8 +9,8 @@ import lombok.*;
 
 public class Admin extends User{
     private String email;
-    public Admin(int is_author, String name, String gender,String email) {
-        super(is_author, name, gender);
+    public Admin(int id_user, String name,String email) {
+        super(id_user, name);
         this.email = email;
     }
 }

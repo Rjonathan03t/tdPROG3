@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS subscriber(
-    id_subscriber INT PRIMARY KEY,
-    username varchar(30),
+    id_user INT PRIMARY KEY,
+    name varchar(30),
     password varchar (50)
 );
 

@@ -1,7 +1,9 @@
 import crudOps.AuthorCrud;
 import crudOps.BookCrud;
+import crudOps.SubscriberCrud;
 import model.Author;
 import model.Book;
+import model.Subscriber;
 import model.Topic;
 
 import java.sql.Connection;
@@ -20,11 +22,12 @@ public class Main {
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
             System.out.println("connexion reussie");
+            //============================BOOKCRUDOPERATIONS==============================
             //BookCrud bookCrud = new BookCrud(connection);
+            //------FINDALL
+            //bookCrud.findAll();
 
-           //bookCrud.findAll();
-
-            //pour tester la methode delete
+            //-----DELETE
             /*Book bookToDelete = new Book();
             bookToDelete.setId_book(6);
             Book deletedBook = bookCrud.delete(bookToDelete);
@@ -34,7 +37,7 @@ public class Main {
 
 
              */
-            //pour tester la methode save
+            //------SAVE
            /* Topic topic = new Topic();
             topic.setTopic_name("OTHER");
 
@@ -56,7 +59,7 @@ public class Main {
 
 
             */
-            //pour tester la methode saveAll
+            //------SAVEALL
 
           /* List<Book> booksToSave = new ArrayList<>();
             booksToSave.add(new Book(5, "Le Seigneur des Anneaux", new Topic("OTHER"), 2));
@@ -76,12 +79,13 @@ public class Main {
            */
 
 
-
-            AuthorCrud authorCrud = new AuthorCrud(connection);
+            //====================AUTHORCRUDOPERATIONS================================
+            //AuthorCrud authorCrud = new AuthorCrud(connection);
+            //--------FINDALL
             //authorCrud.findAll();
 
-            //pour tester la methode delete
-            Author authorToDelete = new Author();
+            //-------DELETE
+           /* Author authorToDelete = new Author();
             authorToDelete.setId_author(4);
             Author deletedAuthor = authorCrud.delete(authorToDelete);
 
@@ -89,7 +93,9 @@ public class Main {
             System.out.println("ID author: " + deletedAuthor.getId_author());
 
 
-            //pour tester la methode save
+            */
+
+            //-------SAVE
            /* Author authorToSave = new Author();
            authorToSave.setId_author(6);
            authorToSave.setName("ilay");
@@ -107,7 +113,7 @@ public class Main {
             */
 
 
-            //methode saveAll
+            //---------SAVEALL
             /*List<Author> authorsToSave = new ArrayList<>();
             authorsToSave.add(new Author(4, "bege" , "M"));
             authorsToSave.add(new Author(5, "labelle" , "F"));
@@ -123,6 +129,48 @@ public class Main {
             }
 
              */
+
+            //===================SUBSCRIBERCRUDOPERATIONS=======================
+            SubscriberCrud subscriberCrud = new SubscriberCrud(connection);
+            //--------FINDALL
+            //subscriberCrud.findAll();
+
+            //------SAVEALL
+           /* List<Subscriber> subscribersToSave = new ArrayList<>();
+            subscribersToSave.add(new Subscriber(4, "fila" , "filacode"));
+            subscribersToSave.add(new Subscriber(5, "jose" , "josecode"));
+
+            List<Subscriber> savedSubscribers = subscriberCrud.saveAll(subscribersToSave);
+
+            System.out.println("subs have been saved successfully:");
+            for (Subscriber savedSubscriber : savedSubscribers) {
+                System.out.println("ID user: " + savedSubscriber.getId_user());
+                System.out.println("name: " + savedSubscriber.getName());
+                System.out.println("password: " + savedSubscriber.getPassword());
+
+            }
+
+            */
+            //-------SAVE
+            /*Subscriber subscriberToSave = new Subscriber(6,"ilay","ilaycode");
+
+            Subscriber savedSubscriber = subscriberCrud.save(subscriberToSave);
+
+            System.out.println("subscribers have been saved successfully:");
+            System.out.println("ID sub: " + savedSubscriber.getId_user());
+            System.out.println("name: " + savedSubscriber.getName());
+            System.out.println("password: " + savedSubscriber.getPassword());
+
+
+
+             */
+
+            //--------DELETE
+            Subscriber SubscriberToDelete = new Subscriber(6,"ilay","ilaycode");
+            Subscriber deletedSubscriber = subscriberCrud.delete(SubscriberToDelete);
+
+            System.out.println("subscriber deleted with success:");
+            System.out.println("ID sub: " + deletedSubscriber.getId_user());
 
 
 
