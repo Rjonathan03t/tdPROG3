@@ -7,9 +7,12 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 @ToString
-
-public class User {
-    private int id_user;
+public class Author {
+    private int id_author;
     private String name;
     private String gender;
+
+    public Author() {
+
+    }
 }

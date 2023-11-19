@@ -65,12 +65,16 @@ public class BookCrud  implements crudOperations<Book> {
 
 
     @Override
-    public void delete(int id_book) throws SQLException {
-        String sql = "DELETE FROM book WHERE id_book = "+id_book;
+    public Book delete(Book toDelete) throws SQLException {
+        String sql = "DELETE FROM book WHERE id_book = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, toDelete.getId_book());
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         System.out.println("DELETE 01");
+        return toDelete;
     }
     private void convertToList(List<Book> allBooks, ResultSet result) throws SQLException {
         allBooks.add(new Book(

@@ -12,5 +12,5 @@ public interface crudOperations<T> {
 
     T save(T toSave) throws SQLException;
 
-    void delete(int id_book) throws SQLException;
+    T delete(T toDelete) throws SQLException;
 }
